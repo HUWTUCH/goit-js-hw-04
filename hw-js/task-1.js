@@ -1,14 +1,23 @@
-const apartment = {
-    imgUrl: "https://via.placeholder.com/640x480",
-    descr: "Spacious apartment in the city center",
-    rating: 4,
-    price: 2153,
-    tags: ["premium", "promoted", "top"],
-};
+"use strict"
+function isEnoughCapacity(products, containerSize) {
+    // Порахувати загальну кількість товарів
+    const totalProducts = Object.values(products).reduce((acc, val) => acc + val, 0);
 
-const aptRating = apartment.rating;
-const aptDescr = apartment.descr;
-const aptPrice = apartment.price;
-const aptTags = apartment.tags;
+    // Перевірити, чи загальна кількість товарів менше або дорівнює containerSize
+    return totalProducts <= containerSize;
+}
+console.log(
+    isEnoughCapacity({ apples: 2, grapes: 3, carrots: 1 }, 8)
+); // true
 
-console.log(aptDescr);
+console.log(
+    isEnoughCapacity({ apples: 4, grapes: 6, lime: 16 }, 12)
+); // false
+
+console.log(
+    isEnoughCapacity({ apples: 1, lime: 5, tomatos: 3 }, 14)
+); // true
+
+console.log(
+    isEnoughCapacity({ apples: 18, potatos: 5, oranges: 2 }, 7)
+); // false
